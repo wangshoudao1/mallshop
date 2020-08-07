@@ -1,11 +1,11 @@
 package com.mall.shop.tiny.controller;
 
+import com.mall.shop.common.CommonResult;
 import com.mall.shop.tiny.model.User;
 import com.mall.shop.tiny.service.MyOwnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,10 +22,8 @@ public class MyOwnController {
     private MyOwnService myOwnService;
 
     @RequestMapping(value="/listAllUser",method= RequestMethod.GET)
-//    @ResponseBody
-    public List<User> listAllUser(){
-       return myOwnService.listAllUser();
+    public CommonResult<List<User>> listAllUser(){
+       return CommonResult.success(myOwnService.listAllUser());
     }
-
 
 }
